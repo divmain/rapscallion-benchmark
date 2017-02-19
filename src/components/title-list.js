@@ -25,7 +25,10 @@ class ListToggle extends Component {
     const handleClick = () => this.setState({ toggled: !this.state.toggled });
 
     return (
-      <div onClick={this.handleClick} data-toggled={this.state.toggled} className="ListToggle">
+      <div
+        onClick={this.handleClick}
+        className={ `ListToggle${this.state.toggled ? " toggled" : ""}` }
+      >
         <div>
           <i className="fa fa-fw fa-plus"></i>
           <i className="fa fa-fw fa-check"></i>
@@ -51,7 +54,7 @@ export default ({ titleList }) => {
   });
   
   return (
-    <div ref="titlecategory" className="TitleList" data-loaded>
+    <div ref="titlecategory" className="TitleList loaded">
       <div className="Title">
         <h1>{name}</h1>
         <div className="titles-wrapper">

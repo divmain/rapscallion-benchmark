@@ -214,10 +214,10 @@ p {
 .Button:hover {
   border: 2px solid #f5f5f1;
 }
-.Button[data-primary='true'] {
+.Button.primary {
   border: 2px solid #e50914;
 }
-.Button[data-primary='true']:hover {
+.Button.primary:hover {
   background: #e50914;
 }
 
@@ -239,7 +239,7 @@ p {
   box-sizing: border-box;
   justify-content: space-between;
 }
-.TitleList[data-loaded='true'] {
+.TitleList.loaded {
   opacity: 1;
 }
 
@@ -341,11 +341,11 @@ p {
 .ListToggle:hover div {
   top: -32px;
 }
-.ListToggle[data-toggled="true"] {
+.ListToggle.toggled {
   background: #e50914;
   border: 2px solid #e50914;
 }
-.ListToggle[data-toggled="true"] div {
+.ListToggle.toggled div {
   top: -32px;
 }
 .ListToggle div {

@@ -2,7 +2,9 @@ import React from "react";
 
 
 const HeroButton = props => (
-  <a href="#" className="Button" data-primary={props.primary}>{props.text}</a>
+  <a href="#" className={`Button${ props.primary ? " primary" : ""}`}>
+    {props.text}
+  </a>
 );
 
 export default props => (
