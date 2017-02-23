@@ -11,7 +11,7 @@ import { apiKey } from "../config";
 
 let helmetCacheKey;
 let heroCacheKey;
-if (process.env.HANDLER === "rapscallion-cached") {
+if (process.env.HANDLER === "cached") {
   helmetCacheKey = "Helmet::";
   heroCacheKey = "Hero::";
 }

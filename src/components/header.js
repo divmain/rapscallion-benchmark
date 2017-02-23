@@ -8,7 +8,7 @@ import UserProfile from "./user-profile";
 let searchCacheKey;
 let logoCacheKey;
 let navCacheKey;
-if (process.env.HANDLER === "rapscallion-cached") {
+if (process.env.HANDLER === "cached") {
   searchCacheKey = "Search::";
   logoCacheKey = "Logo::";
   navCacheKey = "Navigation::"

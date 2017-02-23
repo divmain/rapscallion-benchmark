@@ -38,7 +38,7 @@ class ListToggle extends Component {
   }
 }
 
-const cacheTitleList = process.env.HANDLER === "rapscallion-cached";
+const cacheTitleList = process.env.HANDLER === "cached";
 
 export default ({ titleList }) => {
   const { name, data } = titleList;

@@ -83,9 +83,8 @@ switch (handler) {
   case "react":
     console.log("Using the renderToString handler...");
     app.get("/landing", reactHandler);
-    handler = ;
     break;
-  case "rapscallion-cached":
+  case "cached":
     console.log("Using the Rapscallion handler with caching...");
     app.get("/landing", rapscallionHandler);
     break;
