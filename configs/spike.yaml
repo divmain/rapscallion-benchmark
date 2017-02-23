@@ -1,0 +1,32 @@
+config:
+  target: "http://localhost:3000"
+  http:
+    timeout: 10
+  phases:
+    -
+      duration: 20
+      arrivalRate: 5
+      name: "Baseline A"
+    -
+      duration: 20
+      arrivalRate: 30
+      name: "Moderate spike"
+    -
+      duration: 20
+      arrivalRate: 5
+      name: "Baseline B"
+    -
+      duration: 20
+      arrivalRate: 75
+      name: "Heavy spike"
+    -
+      duration: 20
+      arrivalRate: 5
+      name: "Baseline C"
+scenarios:
+  -
+    name: "Server-side render the landing page."
+    flow:
+      -
+        get:
+          url: "/landing"

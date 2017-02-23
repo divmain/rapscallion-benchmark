@@ -1,0 +1,31 @@
+config:
+  target: "http://localhost:3000"
+  http:
+    timeout: 10
+  phases:
+    -
+      duration: 30
+      arrivalRate: 5
+      name: "Warm up."
+    -
+      pause: 10
+    -
+      duration: 60
+      arrivalRate: 25
+      name: "Moderate load."
+    -
+      duration: 30
+      arrivalRate: 25
+      rampTo: 50
+      name: "Traffic increase."
+    -
+      duration: 120
+      arrivalRate: 50
+      name: "High load."
+scenarios:
+  -
+    name: "Server-side render the landing page."
+    flow:
+      -
+        get:
+          url: "/landing"

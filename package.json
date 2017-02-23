@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "babel-node ./src"
+    "start": "babel-node ./src",
+    "load-spike": "artillery -o ./output/spike.json run ./configs/spike.yaml",
+    "load-sustained": "artillery -o ./output/sustained.json run ./configs/sustained.yaml"
   },
   "repository": {
     "type": "git",
@@ -17,6 +19,7 @@
   },
   "homepage": "https://github.com/divmain/rapscallion-benchmark#readme",
   "dependencies": {
+    "artillery": "^1.5.1",
     "babel-cli": "^6.22.2",
     "babel-plugin-transform-es2015-arrow-functions": "^6.22.0",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.22.0",

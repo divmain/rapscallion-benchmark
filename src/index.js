@@ -1,5 +1,6 @@
 import fs from "fs";
 import path from "path";
+import { Transform } from "stream";
 
 import React, { Component } from "react";
 import express from "express";
@@ -11,7 +12,7 @@ import App from "./components/app";
 
 
 process.env.NODE_ENV = "production";
-
+const handler = process.env.HANDLER;
 
 const app = express();
 
@@ -23,7 +24,7 @@ app.get("/main.css", (req, res) => {
   res.end();
 })
 
-app.get("/rapscallion", (req, res) => {
+const rapscallionHandler = (req, res) => {
   const context = {};
 
   const component = (
@@ -45,10 +46,13 @@ app.get("/rapscallion", (req, res) => {
   </html>`
 
   res.type("text/html");
-  html.toStream().pipe(res);
-});
+  html
+    .tuneAsynchronicity(1000)
+    .toStream()
+    .pipe(res);
+};
 
-app.get("/react-dom", (req, res) => {
+const reactHandler = (req, res) => {
   const context = {};
 
   const component = (
@@ -72,8 +76,25 @@ app.get("/react-dom", (req, res) => {
   res.type("text/html");
   res.send(html);
   res.end();
-});
+};
+
+
+switch (handler) {
+  case "react":
+    console.log("Using the renderToString handler...");
+    app.get("/landing", reactHandler);
+    handler = ;
+    break;
+  case "rapscallion-cached":
+    console.log("Using the Rapscallion handler with caching...");
+    app.get("/landing", rapscallionHandler);
+    break;
+  default:
+    console.log("Using the Rapscallion handler...");
+    app.get("/landing", rapscallionHandler);
+}
+
 
 app.listen(3000, () => {
-  console.log("App listening on port 3000");
+  console.log("App listening on port 3000...");
 });
