@@ -38,6 +38,8 @@ class ListToggle extends Component {
   }
 }
 
+const cacheTitleList = process.env.HANDLER === "rapscallion-cached";
+
 export default ({ titleList }) => {
   const { name, data } = titleList;
 
@@ -54,7 +56,11 @@ export default ({ titleList }) => {
   });
   
   return (
-    <div ref="titlecategory" className="TitleList loaded">
+    <div
+      ref="titlecategory"
+      className="TitleList loaded"
+      cacheKey={cacheTitleList ? `Title::${name}` : undefined}
+    >
       <div className="Title">
         <h1>{name}</h1>
         <div className="titles-wrapper">

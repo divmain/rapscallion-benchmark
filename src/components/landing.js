@@ -9,6 +9,14 @@ import { titleLists } from "../data";
 import { apiKey } from "../config";
 
 
+let helmetCacheKey;
+let heroCacheKey;
+if (process.env.HANDLER === "rapscallion-cached") {
+  helmetCacheKey = "Helmet::";
+  heroCacheKey = "Hero::";
+}
+
+
 export default class Landing extends Component {
   constructor(props) {
     super(props);
@@ -29,6 +37,7 @@ export default class Landing extends Component {
     return (
       <div className="home">
         <Helmet
+          cacheKey={helmetCacheKey}
           title="FakeFlix"
           meta={[
             {"name": "description", "content": "FakeFlix"}
@@ -36,7 +45,7 @@ export default class Landing extends Component {
         />
         <div>
           <Header onSubmit={this.performSearch} />
-          <Hero />
+          <Hero cacheKey={heroCacheKey} />
           {
             titleLists.map(titleList =>
               <TitleList titleList={titleList} />

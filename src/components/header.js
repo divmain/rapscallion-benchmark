@@ -5,12 +5,20 @@ import Navigation from "./navigation";
 import Search from "./search";
 import UserProfile from "./user-profile";
 
+let searchCacheKey;
+let logoCacheKey;
+let navCacheKey;
+if (process.env.HANDLER === "rapscallion-cached") {
+  searchCacheKey = "Search::";
+  logoCacheKey = "Logo::";
+  navCacheKey = "Navigation::"
+}
 
 export default props => (
   <header className="Header">
-    <Logo />
-    <Navigation />
-    <Search onSearch={props.onSearch} />
+    <Logo cacheKey={logoCacheKey} />
+    <Navigation cacheKey={navCacheKey} />
+    <Search onSearch={props.onSearch} cacheKey={searchCacheKey} />
     <UserProfile />
   </header>
 );
