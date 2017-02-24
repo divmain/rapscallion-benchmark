@@ -8,8 +8,6 @@ config:
       arrivalRate: 5
       name: "Warm up."
     -
-      pause: 10
-    -
       duration: 60
       arrivalRate: 25
       name: "Moderate load."
